@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WhatsApp.StatuPage"
+               Title="الصفحة الرئيسية" 
+             BackgroundColor="#F0F0F0"
+             FlowDirection="RightToLeft">
+
+    <!-- شريط التنقل العلوي -->
+
+    <!--<StackLayout BackgroundColor="#075E54" Padding="10" Orientation="Horizontal">
+        <Label Text="الحالة"
+               TextColor="White"
+               FontAttributes="Bold"
+               FontSize="20"
+               VerticalOptions="Center" />
+    </StackLayout>-->
+    <!-- تعريف تخطيط الصفحة الرئيسية -->
+    <ContentPage.ToolbarItems>
+        <!-- أدوات البحث والإعدادات في شريط التنقل -->
+
+        <ToolbarItem IconImageSource="search_icon.jpg" Order="Primary" Priority="0" />
+        <ToolbarItem IconImageSource="settings_icon.png" Order="Primary" Priority="1" />
+
+    </ContentPage.ToolbarItems>
+
+    <!-- محتوى الصفحة -->
+    <ScrollView>
+        <StackLayout Spacing="10" Padding="10">
+
+            <!-- قسم الحالة الخاصة -->
+
+
+            <StackLayout Orientation="Horizontal" BackgroundColor="White" Padding="10" Spacing="10">
+                <Frame CornerRadius="30" WidthRequest="60" HeightRequest="60" HasShadow="False" BorderColor="Green">
+                    <Image Source="dotnet_bot.png" Aspect="AspectFill" WidthRequest="60" HeightRequest="60"/>
+                </Frame>
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="حالتي"
+                       FontAttributes="Bold"
+                       FontSize="16"/>
+                    <Label Text="انقر لإضافة تحديث للحالة"
+                       FontSize="14"
+                       TextColor="Gray"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnStatusTapped" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <!--<StackLayout VerticalOptions="Center">
+                    <Label Text="حالتي"
+                           FontAttributes="Bold"
+                           FontSize="16"/>
+                    <Label Text="انقر لإضافة تحديث للحالة"
+                           FontSize="14"
+                           TextColor="Gray"/>
+                </StackLayout>-->
+            </StackLayout>
+
+            <!-- قسم حالات الأصدقاء -->
+            <Label Text="تحديثات الحالة" FontSize="14" TextColor="Gray" Margin="0,10,0,5"/>
+            <CollectionView ItemsSource="{Binding FriendStatuses}" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" BackgroundColor="White" RowDefinitions="Auto">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- صورة الملف الشخصي -->
+                            <Frame Grid.Column="0" CornerRadius="30" WidthRequest="60" HeightRequest="60" HasShadow="False" BorderColor="Green">
+                                <Image Source="{Binding ProfileImage}" Aspect="Fill" WidthRequest="60" HeightRequest="60"/>
+                            </Frame>
+                            <!-- اسم الصديق ووقت الحالة -->
+                            <StackLayout Grid.Column="1" VerticalOptions="Center" Padding="10,0,0,0">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding Time}" FontSize="14" TextColor="Gray"/>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

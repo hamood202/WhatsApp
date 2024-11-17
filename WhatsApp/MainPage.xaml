@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WhatsApp.MainPage"
+             Title="الصفحة الرئيسية" 
+             FlowDirection="RightToLeft"
+             BackgroundColor="#EDEDED">
+    <!-- تعريف تخطيط الصفحة الرئيسية -->
+
+    <ContentPage.ToolbarItems>
+
+        <!-- أدوات البحث والإعدادات في شريط التنقل -->
+        <ToolbarItem IconImageSource="search_icon.jpg" Order="Primary" Priority="0"  />
+        <ToolbarItem IconImageSource="settings_icon.png" Order="Primary" Priority="1" />
+    </ContentPage.ToolbarItems>
+
+
+
+    <Grid FlowDirection="RightToLeft" >
+
+        <!-- قائمة المحادثات الرئيسية -->
+        <CollectionView x:Name="ChatsList" ItemsSource="{Binding Chats}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" ColumnSpacing="10" FlowDirection="RightToLeft"  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- صورة جهة الاتصال -->
+                        <Frame Grid.Column="0" CornerRadius="30" WidthRequest="60" HeightRequest="60">
+                            <Image Source="{Binding Avatar}"   Aspect="Fill" WidthRequest="60" HeightRequest="60"/>
+
+                        </Frame>
+
+
+                        <!-- تفاصيل المحادثة: الاسم وآخر رسالة -->
+                        <StackLayout Grid.Column="1">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding LastMessage}" FontAttributes="Italic" 
+                                  TextColor="Gray" FlowDirection="RightToLeft" />
+
+                        </StackLayout>
+
+                        <!-- وقت آخر رسالة -->
+                        <Label Grid.Column="2" Text="{Binding Time}" 
+                              FontSize="Small" TextColor="Gray" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+
+
+</ContentPage>
+
+
+
+<!--<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+         Spacing="0"
+         Padding="30,0"
+          
+       VerticalOptions="Start">
+            
+         
+
+            <Label Text="text label " VerticalOptions="Center"   FontAttributes="Bold" FontSize="40" HorizontalOptions="Center" TextColor="Red"> </Label>
+
+            <Label Text="hjhj jhsdj" BackgroundColor="Blue" HeightRequest="40" WidthRequest="100" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+        </VerticalStackLayout>
+
+     
+    </ScrollView>
+
+</ContentPage>-->
